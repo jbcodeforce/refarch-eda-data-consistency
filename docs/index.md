@@ -1,8 +1,8 @@
 # Introduction
 
-This repository includes a set of documents for best practices around data replication between two Kafka clusters.
+This repository includes a set of documents for best practices around data replication between two Kafka clusters and data consistency.
 
-## Mirror Maker 2.0
+## Replication with Mirror Maker 2.0
 
 Mirror Maker 2.0 is the new replication feature of Kafka 2.4. It was defined as part of the Kafka Improvement Process - [KIP 382](https://cwiki.apache.org/confluence/display/KAFKA/KIP-382%3A+MirrorMaker+2.0).
 
@@ -56,29 +56,20 @@ Internally, `MirrorSourceConnector` and `MirrorCheckpointConnector` will create 
 ### Environments
 
 We propose two approaches to run the _on-premise_ Kafka cluster:
-
-* [Docker compose using vanilla Kafka 2.4](#scenario-1-from-kafka-local-as-source-to-event-streams-on-cloud-as-target) - This appraoch to running the local cluster uses Docker with Docker Compose. The Docker Compose file to start a local cluster with 3 Kafka Brokers and 2 Zookeepers is in `mirror-maker-2/local-cluster` folder. This Docker Compose file uses a local Docker network called `kafkanet`. The Docker image used for Kafka comes from the [Strimzi](https://strimzi.io) open source project and is for Kafka version 2.4. We describe how to setup this simple cluster using [Docker Compose in this article](dc-local.md).
+ 
 * [Kafka 2.4 cluster using the Strimzi Operator deployed on Openshift](#scenario-2-run-mirror-maker-2-cluster-close-to-target-cluster) - This approach to runnig the local cluster leverages the Strimzi Kubernetes Operator running on the OpenShift Container Platform.
-
-For the Event Streams on Cloud cluster, we recommend to create your own using an IBM Cloud account. The product [documentation is here](https://cloud.ibm.com/registration?target=catalog/services/event-streams).
+* Event Streams on Cloud cluster, we recommend to create your own using an IBM Cloud account. The product [documentation is here](https://cloud.ibm.com/registration?target=catalog/services/event-streams).
 
 The enviroments are summarized in the table below:
 
 | Environment | Source                 | Target                 | Connect |
 |-------------|------------------------|------------------------|:-------:|
-| 1           | Local                  | Event Streams on Cloud | Local   |
-| 2           | Strimzi on OCP         | Event Streams on Cloud | OCP / Roks |
-| 3           | Event Streams on Cloud | Local                  | Local   |
-| 4           | Event Streams on Cloud | Strimzi on OCP         | OCP/ Roks |
-| 5           | Event Streams on OCP   | Event Streams on Cloud | OCP / Roks |
+| 1           | Strimzi on OCP         | Event Streams on Cloud | OCP / Roks |
+| 2           | Event Streams on Cloud | Strimzi on OCP         | OCP/ Roks |
+| 3           | Event Streams on OCP   | Event Streams on Cloud | OCP / Roks |
 
 The connect column defines where the MirrorMaker 2 connect to.
 
-### Local Kafka cluster to Event Streams on Cloud
-
-The goal is to demonstrate the replicate data from local Kafka cluster to Event Streams on IBM Cloud, which is running as managed service. The two scenarios and the step-by-step approach are presented in [this note](local-to-es.md).
-
-We have documented the replication from Event Streams on IBM Cloud as a Service to a local Kafka cluster in [this note](es-to-local.md) with two scenarios depending on where the target Kafka cluster is running, either on OpenShift or on Docker.
 
 ### Provisioning Connectors (MirrorMaker 2)
 

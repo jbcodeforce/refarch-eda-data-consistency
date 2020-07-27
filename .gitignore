@@ -1,11 +1,13 @@
 site/
+.env
 tls/
 mirror-maker-2/local-cluster/jmx_prometheus_javaagent-0.12.0.jar
-local-cluster/kafka1/
-local-cluster/kafka2/
-local-cluster/kafka3/
-local-cluster/zookeeper1/
-local-cluster/zookeeper2/
+kafka1/
+kafka2/
+kafka3/
+zookeeper1/
+zookeeper2/
+mirror-maker-2/logs/
 mirror-maker-2/local-cluster/mm2.properties
 mirror-maker-2/local-cluster/kafka-to-es-mm2.properties
 mirror-maker-2/es-cluster/es-to-kafka-mm2.properties
@@ -17,6 +19,5 @@ mirror-maker-2/es-cluster/mm2.properties
 mirror-maker-2/ca.crt
 mirror-maker-2/str.crt
 mirror-maker-2/ca.pem
-scripts/setenv.sh
 mirror-maker-2/truststore.jks
 

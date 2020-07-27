@@ -1,7 +1,7 @@
 version: '3'
 services:
     zookeeper1:
-        image: strimzi/kafka:latest-kafka-2.4.0
+        image: strimzi/kafka:latest-kafka-2.5.0
         hostname: zookeeper1
         command: [
             "sh", "-c",
@@ -19,7 +19,7 @@ services:
             - ./zookeeper1/data:/data
             - ./zookeeper1/datalog:/datalog
     zookeeper2:
-        image: strimzi/kafka:latest-kafka-2.4.0
+        image: strimzi/kafka:latest-kafka-2.5.0
         hostname: zookeeper2
         command: [
             "sh", "-c",
@@ -37,7 +37,7 @@ services:
             - ./zookeeper2/data:/data
             - ./zookeeper2/datalog:/datalog
     kafka1:
-        image: strimzi/kafka:latest-kafka-2.4.0
+        image: strimzi/kafka:latest-kafka-2.5.0
         hostname: kafka1
         command: [
         "sh", "-c",
@@ -63,7 +63,7 @@ services:
             - zookeeper1
             - zookeeper2
     kafka2:
-        image: strimzi/kafka:latest-kafka-2.4.0
+        image: strimzi/kafka:latest-kafka-2.5.0
         hostname: kafka2
         command: [
         "sh", "-c",
@@ -88,7 +88,7 @@ services:
             - zookeeper1
             - zookeeper2
     kafka3:
-        image: strimzi/kafka:latest-kafka-2.4.0
+        image: strimzi/kafka:latest-kafka-2.5.0
         hostname: kafka3
         command: [
         "sh", "-c",

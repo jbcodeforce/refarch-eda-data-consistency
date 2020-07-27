@@ -1,8 +1,10 @@
-# EDA - Data Consistency and Replication
+# EDA - Data Replication
 
-This repository includes a set of documents for best practices around data replication between two Kafka clusters and data consistency practices.
+This repository includes scripts and sample test code to support Mirror Maker 2 labs.
 
-Better to read in [BOOK format](https://ibm-cloud-architecture.github.io/refarch-eda-data-consistency).
+Updated 7/25/2020.
+
+To learn more about Mirror Maker 2, see our summary in [this note](https://ibm-cloud-architecture.github.io/refarch-eda/technology/kafka-mirrormaker/).
 
 ## Requirements
 

@@ -1,4 +1,4 @@
-FROM strimzi/kafka:latest-kafka-2.4.0
+FROM strimzi/kafka:latest-kafka-2.5.0
 USER root
 RUN mkdir -p /etc/jmx_exporter
 ADD ./mm2-jmx-exporter.yaml /etc/jmx_exporter

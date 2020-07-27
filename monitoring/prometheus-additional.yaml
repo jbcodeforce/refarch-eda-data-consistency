@@ -1,5 +1,0 @@
-# oc create secret generic additional-scrape-configs --from-file=prometheus-additional.yaml
-- job_name: 'MirrorMaker2'
-  static_configs:
-   - targets:
-     - mm2-cluster-mirrormaker2-api.eda-strimzi-kafka24.svc.cluster.local:9404
