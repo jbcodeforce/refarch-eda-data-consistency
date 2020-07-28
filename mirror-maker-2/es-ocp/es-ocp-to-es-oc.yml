@@ -20,7 +20,7 @@ spec:
           productCloudpakRatio: '2:1'
   version: 2.5.0
   replicas: 1
-  connectCluster: "es-1"
+  connectCluster: "event-streams-wdc"
   logging:
     type: inline
     loggers:
@@ -46,9 +46,9 @@ spec:
   - alias: "event-streams-wdc"
     bootstrapServers: broker-0-qnprtqnp7hnkssdz.kafka.svc01.us-east.eventstreams.cloud.ibm.com:9093,broker-1-qnprtqnp7hnkssdz.kafka.svc01.us-east.eventstreams.cloud.ibm.com:9093,broker-2-qnprtqnp7hnkssdz.kafka.svc01.us-east.eventstreams.cloud.ibm.com:9093,broker-3-qnprtqnp7hnkssdz.kafka.svc01.us-east.eventstreams.cloud.ibm.com:9093,broker-4-qnprtqnp7hnkssdz.kafka.svc01.us-east.eventstreams.cloud.ibm.com:9093,broker-5-qnprtqnp7hnkssdz.kafka.svc01.us-east.eventstreams.cloud.ibm.com:9093
     config:
-      config.storage.replication.factor: 3
-      offset.storage.replication.factor: 3
-      status.storage.replication.factor: 3
+      config.storage.replication.factor: 1
+      offset.storage.replication.factor: 1
+      status.storage.replication.factor: 1
     tls: {}
     authentication:
       passwordSecret:
@@ -57,6 +57,18 @@ spec:
       username: token
       type: plain
   mirrors:
-  - sourceCluster: "es-1-cluster"
+  - sourceCluster: "es-1"
     targetCluster: "event-streams-wdc"
+    sourceConnector:
+      config:
+          replication.factor: 1
+          offset-syncs.topic.replication.factor: 1
+          sync.topic.acls.enabled: "false"
+    heartbeatConnector:
+      config:
+          heartbeats.topic.replication.factor: 1
+    checkpointConnector:
+      config:
+          checkpoints.topic.replication.factor: 1
     topicsPattern: products
+    # topicsBlacklistPattern: "*.heartbeats"
