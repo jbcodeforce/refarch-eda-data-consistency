@@ -71,4 +71,3 @@ spec:
       config:
           checkpoints.topic.replication.factor: 1
     topicsPattern: products
-    # topicsBlacklistPattern: "*.heartbeats"
