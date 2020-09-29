@@ -65,7 +65,7 @@ def signal_handler(sig,frame):
 
 def parseArguments():
     version="0"
-    arg2="./data/products.json"
+    arg2="./data/products2.json"
     if len(sys.argv) == 1:
         print("Usage: SendProductToKafka  --file datafilename ")
         exit(1)
@@ -76,8 +76,8 @@ def parseArguments():
                 arg2=sys.argv[idx+1]
             if arg == "--help":
                 print("Send product json documents to a kafka cluster. Use environment variables KAFKA_BROKERS")
-                print(" and KAFKA_APIKEY is the cluster accept sasl connection with token user")
-                print(" and KAFKA_CERT for ca.crt to add for TLS communication")
+                print(" and KAFKA_PWD is the cluster accept sasl connection with token user")
+                print(" and KAFKA_CERT foto define the path to the pem file, for TLS communication")
                 exit(0)
     return arg2
 
