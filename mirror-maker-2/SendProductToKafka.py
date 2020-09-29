@@ -6,7 +6,6 @@ This is a basic python code to read products data and send them to kafka.
 This is a good scenario for sharing reference data
 '''
 KAFKA_BROKERS = os.getenv('KAFKA_BROKERS')
-KAFKA_APIKEY = os.getenv('KAFKA_APIKEY','')
 KAFKA_CERT = os.getenv('KAFKA_CERT','')
 KAFKA_USER =  os.getenv('KAFKA_USER','token')
 KAFKA_PWD =  os.getenv('KAFKA_PWD','')
@@ -20,20 +19,14 @@ options ={
     'request.timeout.ms' : 15000
 }
 
-if (KAFKA_USER != 'token'):
-    options['security.protocol'] = 'SASL_SSL'
-    options['sasl.mechanisms'] = KAFKA_SASL_MECHANISM
-    options['sasl.username'] = KAFKA_USER
-    options['sasl.password'] = KAFKA_PWD
-else:
-    if (KAFKA_APIKEY != ''):
-        options['security.protocol'] = 'SASL_SSL'
-        options['sasl.mechanisms'] = 'PLAIN'
-        options['sasl.username'] = KAFKA_USER
-        options['sasl.password'] = KAFKA_APIKEY
+options['security.protocol'] = 'SASL_SSL'
+options['sasl.mechanisms'] = KAFKA_SASL_MECHANISM
+options['sasl.username'] = KAFKA_USER
+options['sasl.password'] = KAFKA_PWD
 
 if (KAFKA_CERT != '' ):
     options['ssl.ca.location'] = KAFKA_CERT
+    
 
 print("--- This is the configuration for the producer: ---")
 print('[KafkaProducer] - {}'.format(options))

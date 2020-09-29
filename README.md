@@ -2,69 +2,30 @@
 
 This repository includes scripts and sample test code to support Mirror Maker 2 labs.
 
-Updated 7/25/2020.
+Updated 9/28/2020.
 
 To learn more about Mirror Maker 2, see our summary in [this note](https://ibm-cloud-architecture.github.io/refarch-eda/technology/kafka-mirrormaker/).
 
-## Requirements
+## Event Streams on Cloud to local cluster
 
-### Mirror Maker 2.0
+The lab instructions are in [this note](https://ibm-cloud-architecture.github.io/refarch-eda/use-cases/kafka-mm2/lab-1/).
 
-#### Local cluster to Event Streams on Cloud
+## Using Mirror Maker 2 from Event Streams on premise to Event stream on cloud 
+
+The lab instruction are in [Kafka Mirror Maker 2 - Lab 2](/use-cases/kafka-mm2/lab-2/)
+
+## Local cluster to Event Streams on Cloud
 
 The goal is to demonstrate the replicate data from local cluster to Event Streams on IBM Cloud running as managed service. The two scenarios and the step by step approach are presented in [this note](https://jbcodeforce.github.io/kp-data-replication/local-to-es).
 
 We have also documented the replication approaches from Event Streams as a Service to local cluster in [this note](https://jbcodeforce.github.io/kp-data-replication/es-to-local).
 
-#### Provisioning Connectors (Mirror Maker 2)
+## Monitoring
 
-This main epic is related to provisioning operation.
+For Event stream monitoring see [this article](https://ibm-cloud-architecture.github.io/refarch-eda/use-cases/monitoring-on-cloud/#event-streams-monitoring).
 
-1. As a SRE I want to provision and deploy Mirror Maker 2 connector to existing Openshift cluster without exposing password and keys so replication can start working. 
-    * This will use Kubernetes secrets for configuration parameters to avoid exposing sensitive data. We describe the approach in [this section](http://localhost:8000/mm2-provisioning/#deploying-using-strimzi-mirror-maker-operator)
+Fr Event Streams on OCP see [this note](https://ibm-cloud-architecture.github.io/refarch-eda/use-cases/monitoring-on-ocp/).
 
-1. As a SRE I want to understand the CLI commands used to assess how the provisioning process can be automated. 
-See the [note here](https://jbcodeforce.github.io/kp-data-replication/mm2-provisioning)
 
-1. As a SRE I want to understand the server sizing for the Mirror Maker environment.
+## Performance  tests
 
-*Note that, there is no specific user interface for mirror maker connector.*
-
-#### Version to version migration
-
-1. As a SRE, I want to understand how to perform a version to version migration for the Mirror Maker 2 product so that existing streaming replication is not impacted by the upgrade.
-
-1. As a developer I want to deploy configuration updates to modify the topic white or black lists so that newly added topics are replicated.
-
-### Security
-
-1. As a SRE, I want to understand how the security support to connect client applications to cluster and to replicated topic.
-
-1. As a developer I want to design Mirror Maker 2 based replication solution to support different line of businesses who should not connect to topics and data not related to their business and security scope.
-
-### Monitoring
-
-1. As a SRE, I want to get Mirror Maker 2 metrics for Prometheus so that it fits in my current metrics processing practices.
-    The explanation to setup Prometheus metris for mirror maker 2.0 is documented [here](https://jbcodeforce.github.io/kp-data-replication/monitoring)
-
-1. As a SRE, I want to be able to add new dashboard into Grafana to visualize the Mirror Maker 2 metrics.
-
-1. As a SRE, I want to define rules for alert reporting and configure a Slack channel for alerting.
-
-1. As a SRE, I want to get the Mirror Maker 2 logs into our Splunk logging platform.
-
-### Best Practices
-
-1. As a developer I want to understand how Mirror Maker 2 based replication address the record duplication.
-
-1. As a developer I want to design replication solution to minimize the instance of Mirror Maker or being able to scale them if I observe lag into data replication processing.
-
-1. As a developer I want to understand what are the condition for message loss.
-
-### Performance  tests
-
-1. As a developer I want to understand how to measure data latency and lag in data replication.
-
-1. As a SRE I want to understand current thoughput for the replication solution.
-
-* Ensure message affinity

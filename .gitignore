@@ -4,6 +4,7 @@ tls/
 mirror-maker-2/local-cluster/jmx_prometheus_javaagent-0.12.0.jar
 kafka1/
 kafka2/
+kafka3/
 zookeeper1/
 mirror-maker-2/logs/
 mirror-maker-2/local-cluster/mm2.properties
@@ -14,8 +15,8 @@ mirror-maker-2/kafka-mirror-maker-2.yaml
 mirror-maker-2/mirror-maker.properties
 mirror-maker-2/kafka-to-es-mm2.yml
 mirror-maker-2/es-cluster/mm2.properties
-mirror-maker-2/*.crt
+mirror-maker-2/*.p12
 mirror-maker-2/*.pem
 mirror-maker-2/truststore.jks
-scripts/output.properties 
+scripts/kafdrop.properties 
 

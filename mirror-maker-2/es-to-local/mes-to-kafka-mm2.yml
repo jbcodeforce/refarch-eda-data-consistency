@@ -4,7 +4,7 @@ metadata:
   name: mm2-cluster
   namespace: eda-strimzi-kafka24
 spec:
-  version: 2.4.0
+  version: 2.5.0
   replicas: 1
   connectCluster: strimzi
   logging:
