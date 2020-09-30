@@ -59,15 +59,4 @@ spec:
   mirrors:
   - sourceCluster: "es-1"
     targetCluster: "es-ic"
-    sourceConnector:
-      config:
-          replication.factor: 1
-          offset-syncs.topic.replication.factor: 1
-          sync.topic.acls.enabled: "false"
-    heartbeatConnector:
-      config:
-          heartbeats.topic.replication.factor: 1
-    checkpointConnector:
-      config:
-          checkpoints.topic.replication.factor: 1
-    topicsPattern: products
+    topicsPattern: products,items
